@@ -1,0 +1,5 @@
+# build in NetworkModules
+org.tinet.paho.client.mqttv3.internal.TCPNetworkModuleFactory
+org.tinet.paho.client.mqttv3.internal.SSLNetworkModuleFactory
+org.tinet.paho.client.mqttv3.internal.websocket.WebSocketNetworkModuleFactory
+org.tinet.paho.client.mqttv3.internal.websocket.WebSocketSecureNetworkModuleFactory

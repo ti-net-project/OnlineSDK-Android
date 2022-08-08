@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="testRunner" value="PLATFORM" />
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleHome" value="$PROJECT_DIR$/../../../../soft/android/gradle/gradle-2.4" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/imagepicker" />
+            <option value="$PROJECT_DIR$/mqtt" />
+            <option value="$PROJECT_DIR$/onlineservicesdk" />
+            <option value="$PROJECT_DIR$/oskit" />
+            <option value="$PROJECT_DIR$/oslib" />
+            <option value="$PROJECT_DIR$/ostool" />
+            <option value="$PROJECT_DIR$/oswidget" />
+            <option value="$PROJECT_DIR$/spanhtml" />
+          </set>
+        </option>
+        <option name="resolveModulePerSourceSet" value="false" />
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>

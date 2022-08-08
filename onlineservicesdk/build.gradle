@@ -1,0 +1,66 @@
+plugins {
+    id 'com.android.library'
+    id 'com.github.dcendents.android-maven'
+}
+apply plugin: 'com.kezong.fat-aar'
+group='com.github.smile525'
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+allprojects {
+    repositories {
+        maven { url 'https://jitpack.io' }
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.2.1'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    embed 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
+    embed 'com.jakewharton:disklrucache:2.0.2'
+    embed 'com.github.gzu-liyujiang.AndroidPicker:Common:4.1.5'
+    embed 'com.github.gzu-liyujiang.AndroidPicker:FilePicker:4.1.5'
+    embed 'com.github.chrisbanes:PhotoView:2.3.0'
+    embed "org.jsoup:jsoup:1.12.1"
+
+    //次方法不能将所有aar合并，原因未知
+//    embed project(path: ':lib-aar-local', configuration: 'default')
+
+    embed project(path: ':ostool', configuration: 'default')
+    embed project(path: ':mqtt', configuration: 'default')
+    embed project(path: ':spanhtml', configuration: 'default')
+    embed project(path: ':imagepicker', configuration: 'default')
+    embed project(path: ':oswidget', configuration: 'default')
+    embed project(path: ':oslib', configuration: 'default')
+    embed project(path: ':oskit', configuration: 'default')
+
+}

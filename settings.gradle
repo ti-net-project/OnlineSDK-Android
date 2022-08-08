@@ -1,0 +1,12 @@
+rootProject.name = "OnlineSDK-Android"
+include ':app'
+
+include ':onlineservicesdk'
+
+include ':ostool'
+include ':mqtt'
+include ':spanhtml'
+include ':imagepicker'
+include ':oswidget'
+include ':oslib'
+include ':oskit'

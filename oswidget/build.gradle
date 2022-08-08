@@ -1,0 +1,2 @@
+configurations.maybeCreate("default")
+artifacts.add("default", file('oswidget_1.4.2_sdk_release.aar'))
