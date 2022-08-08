@@ -52,9 +52,6 @@ dependencies {
     embed 'com.github.chrisbanes:PhotoView:2.3.0'
     embed "org.jsoup:jsoup:1.12.1"
 
-    //次方法不能将所有aar合并，原因未知
-//    embed project(path: ':lib-aar-local', configuration: 'default')
-
     embed project(path: ':ostool', configuration: 'default')
     embed project(path: ':mqtt', configuration: 'default')
     embed project(path: ':spanhtml', configuration: 'default')
