@@ -1,2 +1,0 @@
-configurations.maybeCreate("default")
-artifacts.add("default", file('ostool_1.4.2_sdk_release.aar'))

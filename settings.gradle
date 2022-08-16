@@ -3,7 +3,7 @@ include ':app'
 
 include ':onlineservicesdk'
 
-include ':ostool'
+include ':threepart'
 include ':mqtt'
 include ':spanhtml'
 include ':imagepicker'

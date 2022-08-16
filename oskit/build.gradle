@@ -1,2 +1,2 @@
 configurations.maybeCreate("default")
-artifacts.add("default", file('oskit_1.4.4_sdk_release.aar'))
+artifacts.add("default", file('oskit_1.4.5_sdk_release.aar'))

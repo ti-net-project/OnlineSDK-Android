@@ -12,8 +12,8 @@ android {
     defaultConfig {
         minSdkVersion 19
         targetSdkVersion 30
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "1.4.5"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -21,8 +21,11 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            android.libraryVariants.all { variant ->
+                variant.outputs.all {
+                    outputFileName = "online_sdk_${defaultConfig.versionName}_${variant.buildType.name}.aar"
+                }
+            }
         }
     }
     compileOptions {
@@ -52,7 +55,7 @@ dependencies {
     embed 'com.github.chrisbanes:PhotoView:2.3.0'
     embed "org.jsoup:jsoup:1.12.1"
 
-    embed project(path: ':ostool', configuration: 'default')
+    embed project(configuration: 'default', path: ':threepart')
     embed project(path: ':mqtt', configuration: 'default')
     embed project(path: ':spanhtml', configuration: 'default')
     embed project(path: ':imagepicker', configuration: 'default')
