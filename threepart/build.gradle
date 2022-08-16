@@ -1,2 +1,2 @@
 configurations.maybeCreate("default")
-artifacts.add("default", file('threepart_1.4.2_sdk_release.aar'))
+artifacts.add("default", file('threepart_1.5.0_sdk_release.aar'))
