@@ -13,7 +13,7 @@ android {
         minSdkVersion 19
         targetSdkVersion 30
         versionCode 2
-        versionName "1.5.0"
+        versionName "1.5.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -48,7 +48,7 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
-    embed 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
     embed 'com.jakewharton:disklrucache:2.0.2'
     embed 'com.github.gzu-liyujiang.AndroidPicker:Common:4.1.5'
     embed 'com.github.gzu-liyujiang.AndroidPicker:FilePicker:4.1.5'
