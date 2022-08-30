@@ -3,7 +3,7 @@ plugins {
     id 'com.github.dcendents.android-maven'
 }
 apply plugin: 'com.kezong.fat-aar'
-group='com.github.smile525'
+group = 'com.github.smile525'
 
 android {
     compileSdkVersion 30

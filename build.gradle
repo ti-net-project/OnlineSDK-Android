@@ -15,6 +15,20 @@ buildscript {
     }
 }
 
+task buildOnlineServiceSDK{
+    group = "build os aar"
+
+    dependsOn(":onlineservicesdk:assemble")
+
+    doLast {
+        copy {
+            from "${project.projectDir}/onlineservicesdk/build/outputs/aar"
+            include "*_release.aar"
+            into "../../ti-net/clink-sdk/clink-appsdk/android/demo/TOSClientKitDemo/app/libs"
+        }
+    }
+}
+
 allprojects {
     repositories {
         google()
