@@ -13,7 +13,7 @@ android {
         minSdkVersion 19
         targetSdkVersion 30
         versionCode 3
-        versionName "1.5.3"
+        versionName "1.5.3.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -49,10 +49,10 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
+    implementation 'com.github.chrisbanes:PhotoView:2.3.0'
     embed 'com.jakewharton:disklrucache:2.0.2'
     embed 'com.github.gzu-liyujiang.AndroidPicker:Common:4.1.5'
     embed 'com.github.gzu-liyujiang.AndroidPicker:FilePicker:4.1.5'
-    embed 'com.github.chrisbanes:PhotoView:2.3.0'
     embed "org.jsoup:jsoup:1.12.1"
 
     embed project(configuration: 'default', path: ':threepart')
