@@ -1,2 +1,2 @@
 configurations.maybeCreate("default")
-artifacts.add("default", file('oslib_1.5.3_release.aar'))
+artifacts.add("default", file('oslib_1.5.4_release.aar'))
