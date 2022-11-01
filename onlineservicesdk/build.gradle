@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.library'
     id 'com.github.dcendents.android-maven'
+    id 'maven-publish'
 }
 apply plugin: 'com.kezong.fat-aar'
 group = 'com.github.smile525'
@@ -63,4 +64,21 @@ dependencies {
     embed project(path: ':oslib', configuration: 'default')
     embed project(path: ':oskit', configuration: 'default')
 
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            // Creates a Maven publication called "release".
+            release(MavenPublication) {
+                from components.release
+                //建议和github地址对应，否则对jitpack无效
+                groupId = 'com.github.smile525'
+                //建议和github仓库名称对应，否则对jitpack无效
+                artifactId = 'OnlineSDK-Android'
+                //建议和release的tag相同，否则对jitpack无效
+                version = '1.5.9'
+            }
+        }
+    }
 }
