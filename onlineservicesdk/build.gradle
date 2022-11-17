@@ -12,7 +12,7 @@ android {
         minSdkVersion 19
         targetSdkVersion 31
         versionCode 11
-        versionName "1.5.9"
+        versionName "${versionName}"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -22,7 +22,7 @@ android {
         release {
             android.libraryVariants.all { variant ->
                 variant.outputs.all {
-                    outputFileName = "online_sdk_${defaultConfig.versionName}_${variant.buildType.name}.aar"
+                    outputFileName = "online_sdk_${versionName}_${variant.buildType.name}.aar"
                 }
             }
         }
@@ -71,11 +71,11 @@ afterEvaluate {
             release(MavenPublication) {
                 from components.release
                 //建议和github地址对应，否则对jitpack无效
-                groupId = 'com.github.ti-net-project'
+                groupId = "${groupId}"
                 //建议和github仓库名称对应，否则对jitpack无效
-                artifactId = 'OnlineSDK-Android'
+                artifactId = "${artifactId}"
                 //建议和release的tag相同，否则对jitpack无效
-                version = '1.5.9'
+                version = "${versionName}"
             }
         }
     }

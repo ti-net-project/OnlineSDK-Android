@@ -15,7 +15,7 @@ buildscript {
     }
 }
 
-task buildOnlineServiceSDK{
+task buildOnlineServiceSDK {
     group = "build os aar"
 
     dependsOn(":onlineservicesdk:assemble")
@@ -38,4 +38,13 @@ allprojects {
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+
+ext {
+
+    versionName = '1.5.9.2'
+
+    groupId = 'com.github.ti-net-project'
+    artifactId = 'OnlineSDK-Android'
+
 }
