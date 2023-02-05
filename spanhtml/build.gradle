@@ -1,2 +1,2 @@
 configurations.maybeCreate("default")
-artifacts.add("default", file('spanhtml_1.6.2_sdk_release.aar'))
+artifacts.add("default", file('spanhtml_1.6.2.2_sdk_release.aar'))
