@@ -1,2 +1,2 @@
 configurations.maybeCreate("default")
-artifacts.add("default", file('mqtt_1.6.2.4_sdk_release.aar'))
+artifacts.add("default", file('mqtt_1.7.0.1_sdk_release.aar'))
