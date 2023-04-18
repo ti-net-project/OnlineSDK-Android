@@ -1,2 +1,2 @@
 configurations.maybeCreate("default")
-artifacts.add("default", file('oswidget_1.7.0.1_sdk_release.aar'))
+artifacts.add("default", file('oswidget_1.7.0.2_sdk_release.aar'))
