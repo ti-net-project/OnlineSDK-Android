@@ -8,4 +8,5 @@
 .cxx
 local.properties
 /*/build
+/.idea
 /.idea/
