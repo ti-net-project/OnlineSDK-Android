@@ -45,7 +45,7 @@ task clean(type: Delete) {
 
 ext {
 
-    versionName = '1.7.0.2.1'
+    versionName = '1.7.0.2.2'
 
     groupId = 'com.github.ti-net-project'
     artifactId = 'OnlineSDK-Android'
