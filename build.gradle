@@ -18,7 +18,21 @@ buildscript {
     }
 }
 
-task buildOnlineServiceSDK {
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+task clean(type: Delete) {
+    //清除项目编译缓存
+    delete rootProject.buildDir
+    //清除SDK整合module变编译缓存
+    dependsOn(":onlineservicesdk:clean")
+}
+
+task buildOnlineServiceSDK(dependsOn: clean) {
     group = "build os aar"
 
     dependsOn(":onlineservicesdk:assemble")
@@ -32,20 +46,9 @@ task buildOnlineServiceSDK {
     }
 }
 
-allprojects {
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
-
-task clean(type: Delete) {
-    delete rootProject.buildDir
-}
-
 ext {
 
-    versionName = '1.7.12'
+    versionName = '1.7.13'
 
     groupId = 'com.github.ti-net-project'
     artifactId = 'OnlineSDK-Android'

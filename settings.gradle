@@ -5,7 +5,6 @@ include ':onlineservicesdk'
 
 include ':threepart'
 include ':mqtt'
-include ':spanhtml'
 include ':imagepicker'
 include ':oswidget'
 include ':oslib'

@@ -56,7 +56,6 @@ dependencies {
 
     embed project(configuration: 'default', path: ':threepart')
     embed project(path: ':mqtt', configuration: 'default')
-    embed project(path: ':spanhtml', configuration: 'default')
     embed project(path: ':imagepicker', configuration: 'default')
     embed project(path: ':oswidget', configuration: 'default')
     embed project(path: ':oslib', configuration: 'default')
