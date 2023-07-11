@@ -22,7 +22,11 @@ android {
         release {
             android.libraryVariants.all { variant ->
                 variant.outputs.all {
-                    outputFileName = "online_sdk_${versionName}_${variant.buildType.name}.aar"
+                    if (onlineLib.toBoolean()) {
+                        outputFileName = "online_lib_sdk_${versionName}_${variant.buildType.name}.aar"
+                    } else {
+                        outputFileName = "online_kit_sdk_${versionName}_${variant.buildType.name}.aar"
+                    }
                 }
             }
         }
@@ -47,19 +51,24 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
-    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
-    implementation 'com.github.chrisbanes:PhotoView:2.3.0'
-    implementation 'com.jakewharton:disklrucache:2.0.2'
+    //Lib版本依赖库
     implementation "org.jsoup:jsoup:1.12.1"
-//    implementation 'com.github.gzu-liyujiang.AndroidPicker:Common:4.1.5'
-//    implementation 'com.github.gzu-liyujiang.AndroidPicker:FilePicker:4.1.5'
-
-    embed project(configuration: 'default', path: ':threepart')
+    //Lib版本依赖模块
     embed project(path: ':mqtt', configuration: 'default')
-    embed project(path: ':imagepicker', configuration: 'default')
-    embed project(path: ':oswidget', configuration: 'default')
     embed project(path: ':oslib', configuration: 'default')
-    embed project(path: ':oskit', configuration: 'default')
+
+    //判断是否打包Kit版本，若打包Kit版本，需要将以下模块一起打包
+    if (!onlineLib.toBoolean()) {
+        //Kit版本依赖库
+        implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
+        implementation 'com.github.chrisbanes:PhotoView:2.3.0'
+        implementation 'com.jakewharton:disklrucache:2.0.2'
+        //Kit版本依赖模块
+        embed project(configuration: 'default', path: ':threepart')
+        embed project(path: ':imagepicker', configuration: 'default')
+        embed project(path: ':oswidget', configuration: 'default')
+        embed project(path: ':oskit', configuration: 'default')
+    }
 
 }
 
