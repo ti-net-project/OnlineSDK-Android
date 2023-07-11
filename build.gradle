@@ -32,10 +32,10 @@ task clean(type: Delete) {
     dependsOn(":onlineservicesdk:clean")
 }
 
-task buildOnlineServiceSDK(dependsOn: clean) {
+task buildOnlineKitSDK(dependsOn: clean) {
     group = "build os aar"
 
-    dependsOn(":onlineservicesdk:assemble")
+    dependsOn(":onlineservicesdk:assembleKit")
 
     doLast {
         copy {
@@ -46,11 +46,32 @@ task buildOnlineServiceSDK(dependsOn: clean) {
     }
 }
 
+task buildOnlineLibSDK(dependsOn: clean) {
+    group = "build os aar"
+
+    dependsOn(":onlineservicesdk:assembleLib")
+
+    doLast {
+        copy {
+            from "${project.projectDir}/onlineservicesdk/build/outputs/aar"
+            include "*_release.aar"
+            into "../../ti-net/clink-sdk/clink-appsdk/android/demo/TOSClientKitDemo/app/libs"
+        }
+    }
+}
+
+
 ext {
 
-    versionName = '1.7.17'
+    versionName = '1.7.18'
 
     groupId = 'com.github.ti-net-project'
     artifactId = 'OnlineSDK-Android'
+
+
+    libVersionName = '1.7.18'
+
+    libGroupId = 'com.github.ti-net-project-lib'
+    libArtifactId = 'OnlineSDK-Android'
 
 }

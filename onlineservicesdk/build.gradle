@@ -31,6 +31,19 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    flavorDimensions "app"
+
+    productFlavors {
+
+        lib {
+            dimension = "app"
+        }
+
+        kit {
+            dimension = "app"
+        }
+    }
 }
 
 allprojects {
@@ -59,16 +72,16 @@ dependencies {
     embed project(path: ':imagepicker', configuration: 'default')
     embed project(path: ':oswidget', configuration: 'default')
     embed project(path: ':oslib', configuration: 'default')
-    embed project(path: ':oskit', configuration: 'default')
 
+    kitEmbed project(path: ':oskit', configuration: 'default')
 }
 
 afterEvaluate {
     publishing {
         publications {
             // Creates a Maven publication called "release".
-            release(MavenPublication) {
-                from components.release
+            kitRelease(MavenPublication){
+                from components.kitRelease
                 //建议和github地址对应，否则对jitpack无效
                 groupId = "${groupId}"
                 //建议和github仓库名称对应，否则对jitpack无效
@@ -76,6 +89,27 @@ afterEvaluate {
                 //建议和release的tag相同，否则对jitpack无效
                 version = "${versionName}"
             }
+
+            libRelease(MavenPublication){
+                from components.kitRelease
+                //建议和github地址对应，否则对jitpack无效
+                groupId = "${libGroupId}"
+                //建议和github仓库名称对应，否则对jitpack无效
+                artifactId = "${libArtifactId}"
+                //建议和release的tag相同，否则对jitpack无效
+                version = "${libVersionName}"
+            }
+
+
+//            release(MavenPublication) {
+//                from components.release
+//                //建议和github地址对应，否则对jitpack无效
+//                groupId = "${outKitAar?groupId:libGroupId}"
+//                //建议和github仓库名称对应，否则对jitpack无效
+//                artifactId = "${outKitAar?artifactId:libArtifactId}"
+//                //建议和release的tag相同，否则对jitpack无效
+//                version = "${outKitAar?versionName:libVersionName}"
+//            }
         }
     }
 }
