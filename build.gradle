@@ -48,7 +48,8 @@ task buildOnlineServiceSDK(dependsOn: clean) {
 
 ext {
 
-    versionName = 'lib-1.7.17'
+    //版本号规则，如为lib，则末尾拼接"_lib",必须为下划线，不可为横杠
+    versionName = '1.7.17_lib'
 
     groupId = 'com.github.ti-net-project'
     artifactId = 'OnlineSDK-Android'
