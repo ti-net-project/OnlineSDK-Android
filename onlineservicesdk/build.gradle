@@ -22,7 +22,7 @@ android {
         release {
             android.libraryVariants.all { variant ->
                 variant.outputs.all {
-                    outputFileName = "online_sdk_${versionName}_${variant.buildType.name}.aar"
+                    outputFileName = "online_sdk_${versionName}_${variant.productFlavors[0].name}_${variant.buildType.name}.aar"
                 }
             }
         }
