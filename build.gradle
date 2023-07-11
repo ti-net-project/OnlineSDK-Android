@@ -63,15 +63,19 @@ task buildOnlineLibSDK(dependsOn: clean) {
 
 ext {
 
+
+    // 版本号规则，拼接字符串必须为下划线，不可为横杠
+    // 如为lib，则版本号末尾拼接"_lib"标识符
+    // 如为kib，则版本号末尾拼接"_kit"标识符
     versionName = '1.7.18'
 
     groupId = 'com.github.ti-net-project'
     artifactId = 'OnlineSDK-Android'
 
 
-    libVersionName = '1.7.18'
+    libVersionName = '1.7.18_lib'
 
-    libGroupId = 'com.github.ti-net-project-lib'
+    libGroupId = 'com.github.ti-net-project'
     libArtifactId = 'OnlineSDK-Android'
 
 }

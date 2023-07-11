@@ -60,19 +60,20 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
-    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
-    implementation 'com.github.chrisbanes:PhotoView:2.3.0'
-    implementation 'com.jakewharton:disklrucache:2.0.2'
+    //lib版本依赖库
     implementation "org.jsoup:jsoup:1.12.1"
-//    implementation 'com.github.gzu-liyujiang.AndroidPicker:Common:4.1.5'
-//    implementation 'com.github.gzu-liyujiang.AndroidPicker:FilePicker:4.1.5'
-
-    embed project(configuration: 'default', path: ':threepart')
+    //lib版本依赖模块
     embed project(path: ':mqtt', configuration: 'default')
-    embed project(path: ':imagepicker', configuration: 'default')
-    embed project(path: ':oswidget', configuration: 'default')
     embed project(path: ':oslib', configuration: 'default')
 
+    //kit版本依赖库
+    kitImplementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
+    kitImplementation 'com.github.chrisbanes:PhotoView:2.3.0'
+    kitImplementation 'com.jakewharton:disklrucache:2.0.2'
+    //kit版本依赖模块
+    kitEmbed project(configuration: 'default', path: ':threepart')
+    kitEmbed project(path: ':imagepicker', configuration: 'default')
+    kitEmbed project(path: ':oswidget', configuration: 'default')
     kitEmbed project(path: ':oskit', configuration: 'default')
 }
 
