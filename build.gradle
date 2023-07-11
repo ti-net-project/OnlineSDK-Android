@@ -48,7 +48,7 @@ task buildOnlineServiceSDK(dependsOn: clean) {
 
 ext {
 
-    versionName = '1.7.17'
+    versionName = 'lib-1.7.17'
 
     groupId = 'com.github.ti-net-project'
     artifactId = 'OnlineSDK-Android'
