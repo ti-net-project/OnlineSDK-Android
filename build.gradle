@@ -73,9 +73,6 @@ ext {
     artifactId = 'OnlineSDK-Android'
 
 
-    libVersionName = '1.7.19_lib'
-
-    libGroupId = 'com.github.ti-net-project'
-    libArtifactId = 'OnlineSDK-Android'
+    libVersionName = '1.7.20_lib'
 
 }
