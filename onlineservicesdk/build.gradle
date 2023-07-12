@@ -42,7 +42,7 @@ android {
 
         kit {
             dimension = "app"
-            versionName = versionName
+            versionName = kitVersionName
         }
     }
 }
@@ -92,7 +92,7 @@ afterEvaluate {
                 //建议和github仓库名称对应，否则对jitpack无效
                 artifactId = "${artifactId}"
                 //建议和release的tag相同，否则对jitpack无效
-                version = "${versionName}"
+                version = "${kitVersionName}"
             }
 
             libRelease(MavenPublication){
