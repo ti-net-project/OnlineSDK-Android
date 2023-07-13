@@ -32,6 +32,9 @@ task clean(type: Delete) {
     dependsOn(":onlineservicesdk:clean")
 }
 
+/**
+ * 发布kit aar的task
+ * */
 task buildOnlineKitSDK(dependsOn: clean) {
     group = "build os aar"
 
@@ -46,6 +49,9 @@ task buildOnlineKitSDK(dependsOn: clean) {
     }
 }
 
+/**
+ * 发布lib aar的task
+ */
 task buildOnlineLibSDK(dependsOn: clean) {
     group = "build os aar"
 
@@ -62,17 +68,15 @@ task buildOnlineLibSDK(dependsOn: clean) {
 
 
 ext {
+    //发布说明
+    // 发布客服Lib项目需要修改libVersionName，同时执行buildOnlineLibSDK
+    // 发布客服kit项目需要修改kitVersionName，同时执行buildOnlineKitSDK
 
-
-    // 版本号规则，拼接字符串必须为下划线，不可为横杠
-    // 如为lib，则版本号末尾拼接"_lib"标识符
-    // 如为kib，则版本号末尾拼接"_kit"标识符
+    // kit version name
     kitVersionName = '1.7.19'
+    // lib version name
+    libVersionName = '1.7.20_lib'
 
     groupId = 'com.github.ti-net-project'
     artifactId = 'OnlineSDK-Android'
-
-
-    libVersionName = '1.7.20_lib'
-
 }
