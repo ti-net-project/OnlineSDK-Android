@@ -73,9 +73,9 @@ ext {
     // 发布客服kit项目需要修改kitVersionName，同时执行buildOnlineKitSDK
 
     // kit version name
-    kitVersionName = '1.7.19'
+    kitVersionName = '1.8.0'
     // lib version name
-    libVersionName = '1.7.20_lib'
+    libVersionName = '1.8.0_lib'
 
     groupId = 'com.github.ti-net-project'
     artifactId = 'OnlineSDK-Android'
