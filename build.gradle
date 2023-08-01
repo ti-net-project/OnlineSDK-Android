@@ -75,8 +75,8 @@ ext {
     // kit version name
     kitVersionName = '1.8.1'
     // lib version name
-    libVersionName = '1.8.0_lib'
+    libVersionName = '1.8.0'
 
     groupId = 'com.github.ti-net-project'
-    artifactId = 'OnlineSDK-Android'
+    artifactId = 'OnlineSDK-lib-Android'
 }
