@@ -68,14 +68,14 @@ dependencies {
     embed project(path: ':oslib', configuration: 'default')
 
     //kit版本依赖库
-    kitImplementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
-    kitImplementation 'com.github.chrisbanes:PhotoView:2.3.0'
-    kitImplementation 'com.jakewharton:disklrucache:2.0.2'
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
+    implementation 'com.github.chrisbanes:PhotoView:2.3.0'
+    implementation 'com.jakewharton:disklrucache:2.0.2'
     //kit版本依赖模块
-    kitEmbed project(configuration: 'default', path: ':threepart')
-    kitEmbed project(path: ':imagepicker', configuration: 'default')
-    kitEmbed project(path: ':oswidget', configuration: 'default')
-    kitEmbed project(path: ':oskit', configuration: 'default')
+    embed project(configuration: 'default', path: ':threepart')
+    embed project(path: ':imagepicker', configuration: 'default')
+    embed project(path: ':oswidget', configuration: 'default')
+    embed project(path: ':oskit', configuration: 'default')
 }
 
 afterEvaluate {
