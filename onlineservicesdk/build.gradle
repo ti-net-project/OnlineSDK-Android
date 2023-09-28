@@ -9,7 +9,7 @@ android {
     buildToolsVersion "31.0.0"
 
     defaultConfig {
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 31
         versionCode 11
 
@@ -71,6 +71,7 @@ dependencies {
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
     implementation 'com.github.chrisbanes:PhotoView:2.3.0'
     implementation 'com.jakewharton:disklrucache:2.0.2'
+    implementation "com.github.smile525:WXCameraLibrary:1.0.2"  //拍照、摄像
     //kit版本依赖模块
     embed project(configuration: 'default', path: ':threepart')
     embed project(path: ':imagepicker', configuration: 'default')
