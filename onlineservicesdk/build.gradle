@@ -5,12 +5,12 @@ plugins {
 apply plugin: 'com.kezong.fat-aar'
 
 android {
-    compileSdkVersion 31
-    buildToolsVersion "31.0.0"
+    compileSdkVersion 33
+    buildToolsVersion "33.0.0"
 
     defaultConfig {
         minSdkVersion 21
-        targetSdkVersion 31
+        targetSdkVersion 33
         versionCode 11
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
