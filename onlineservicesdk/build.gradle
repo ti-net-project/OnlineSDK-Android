@@ -71,7 +71,7 @@ dependencies {
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
     implementation 'com.github.chrisbanes:PhotoView:2.3.0'
     implementation 'com.jakewharton:disklrucache:2.0.2'
-    implementation "com.github.smile525:WXCameraLibrary:1.0.2"  //拍照、摄像
+    implementation "com.github.smile525:WXCameraLibrary:1.0.6"  //拍照、摄像
     implementation 'com.github.smile525:AndroidVideoCache:1.0.1' //视频缓存框架
     compileOnly 'com.github.bumptech.glide:glide:4.11.0'//gif图片加载所用
 
