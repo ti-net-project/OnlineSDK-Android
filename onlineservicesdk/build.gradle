@@ -19,6 +19,7 @@ android {
 
     buildTypes {
         release {
+            minifyEnabled false
             android.libraryVariants.all { variant ->
                 variant.outputs.all {
                     outputFileName = "online_${variant.productFlavors[0].versionName}_${variant.productFlavors[0].name}_${variant.buildType.name}.aar"
