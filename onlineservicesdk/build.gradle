@@ -74,11 +74,10 @@ dependencies {
     implementation "com.github.smile525:WXCameraLibrary:1.0.8"  //拍照、摄像
     implementation 'com.github.smile525:AndroidVideoCache:1.0.1' //视频缓存框架
     compileOnly 'com.github.bumptech.glide:glide:4.11.0'//gif图片加载所用
-    embed 'com.gitee.smile525:ImagePickerLibrary:1.0.0'//相册选择(兼容Android14+)
+    implementation 'com.gitee.smile525:ImagePickerLibrary:1.0.0'//相册选择(兼容Android14+)
 
     //kit版本依赖模块
     embed project(configuration: 'default', path: ':threepart')
-    embed project(path: ':imagepicker', configuration: 'default')
     embed project(path: ':oswidget', configuration: 'default')
     embed project(path: ':oskit', configuration: 'default')
 }
