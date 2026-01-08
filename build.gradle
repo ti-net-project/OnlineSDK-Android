@@ -75,7 +75,7 @@ ext {
     // 发布客服kit项目需要修改kitVersionName，同时执行buildOnlineKitSDK
 
     // kit version name
-    kitVersionName = '2.5.13-beta.1'
+    kitVersionName = '2.5.13-beta.2'
     // lib version name
     libVersionName = '1.8.0_lib'
 
