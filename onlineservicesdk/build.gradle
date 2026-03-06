@@ -93,11 +93,11 @@ afterEvaluate {
 
                 from components.kitRelease
                 //建议和github地址对应，否则对jitpack无效
-                groupId = "${groupId}"
+                groupId = rootProject.ext.publishedGroupId
                 //建议和github仓库名称对应，否则对jitpack无效
-                artifactId = "${artifactId}"
+                artifactId = rootProject.ext.publishedArtifactId
                 //建议和release的tag相同，否则对jitpack无效
-                version = "${kitVersionName}"
+                version = rootProject.ext.kitVersionName
             }
 
             libRelease(MavenPublication) {
@@ -105,11 +105,11 @@ afterEvaluate {
 
                 from components.libRelease
                 //建议和github地址对应，否则对jitpack无效
-                groupId = "${groupId}"
+                groupId = rootProject.ext.publishedGroupId
                 //建议和github仓库名称对应，否则对jitpack无效
-                artifactId = "${artifactId}"
+                artifactId = rootProject.ext.publishedArtifactId
                 //建议和release的tag相同，否则对jitpack无效
-                version = "${libVersionName}"
+                version = rootProject.ext.libVersionName
             }
 
 

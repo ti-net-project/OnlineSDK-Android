@@ -79,6 +79,6 @@ ext {
     // lib version name
     libVersionName = '1.8.0_lib'
 
-    groupId = 'com.github.ti-net-project'
-    artifactId = 'OnlineSDK-Android-BAIC'
+    publishedGroupId = 'com.github.ti-net-project'
+    publishedArtifactId = 'OnlineSDK-Android-BAIC'
 }
