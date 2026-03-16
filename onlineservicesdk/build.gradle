@@ -31,6 +31,14 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+    packagingOptions {
+        pickFirst 'META-INF/services/org.tinet.paho.client.mqttv3.spi.NetworkModuleFactory'
+        pickFirst 'org/tinet/paho/client/mqttv3/internal/nls/logcat.properties'
+        pickFirst 'org/tinet/paho/client/mqttv3/internal/nls/messages.properties'
+        pickFirst 'org/tinet/paho/client/mqttv3/internal/nls/messages_zh_CN.properties'
+        pickFirst 'tinet_bundle.properties'
+    }
+
     flavorDimensions "app"
 
     productFlavors {
@@ -57,6 +65,10 @@ dependencies {
 
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'com.google.android.material:material:1.2.0'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.9.24"
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.asynclayoutinflater:asynclayoutinflater:1.0.0'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
@@ -71,15 +83,20 @@ dependencies {
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
     implementation 'com.github.chrisbanes:PhotoView:2.3.0'
     implementation 'com.jakewharton:disklrucache:2.0.2'
-    implementation "com.github.Live800Luo:WXCameraLibrary:1.0.9"  //拍照、摄像
     implementation 'com.github.smile525:AndroidVideoCache:1.0.2' //视频缓存框架
-    compileOnly 'com.github.bumptech.glide:glide:4.11.0'//gif图片加载所用
+    implementation('com.otaliastudios:cameraview:2.7.2') {
+        exclude group: 'com.google.android.gms', module: 'play-services-tasks'
+    }
+    implementation 'com.google.android.gms:play-services-tasks:18.2.0'
+    implementation 'com.github.zhongjhATC:CircularProgressView:1.8'
+    compileOnly 'com.github.bumptech.glide:glide:4.16.0'//gif图片加载所用
 //  implementation 'com.gitee.smile525:ImagePickerLibrary:1.0.0'//相册选择(兼容Android14+)
 
     //kit版本依赖模块
     embed project(configuration: 'default', path: ':threepart')
     embed project(path: ':imagepicker', configuration: 'default')
     embed project(path: ':oswidget', configuration: 'default')
+    embed project(path: ':wxcamera', configuration: 'default')
     embed project(path: ':oskit', configuration: 'default')
 }
 
@@ -123,5 +140,28 @@ afterEvaluate {
 //                version = "${outKitAar?versionName:libVersionName}"
 //            }
         }
+
+        repositories {
+            maven {
+                name = "sdk"
+                url = uri("${rootProject.buildDir}/sdk-repo")
+            }
+        }
+    }
+
+    tasks.matching { it.name in [
+            'generateMetadataFileForKitReleasePublication',
+            'publishKitReleasePublicationToMavenLocal',
+            'publishKitReleasePublicationToSdkRepository'
+    ] }.configureEach {
+        dependsOn tasks.named('reBundleAarKitRelease')
+    }
+
+    tasks.matching { it.name in [
+            'generateMetadataFileForLibReleasePublication',
+            'publishLibReleasePublicationToMavenLocal',
+            'publishLibReleasePublicationToSdkRepository'
+    ] }.configureEach {
+        dependsOn tasks.named('reBundleAarLibRelease')
     }
 }

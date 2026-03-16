@@ -75,10 +75,117 @@ ext {
     // 发布客服kit项目需要修改kitVersionName，同时执行buildOnlineKitSDK
 
     // kit version name
-    kitVersionName = '2.5.14-baic'
+    kitVersionName = '2.5.14-beta.1'
     // lib version name
     libVersionName = '1.8.0_lib'
 
     publishedGroupId = 'com.github.ti-net-project'
-    publishedArtifactId = 'OnlineSDK-Android-BAIC'
+    publishedArtifactId = 'OnlineSDK-Android'
+}
+
+def baicDeliveryDirName = "${publishedArtifactId}-${kitVersionName}"
+def baicReadmeFile = layout.buildDirectory.file("delivery-tmp/README-Usage.md")
+def baicStagingDir = layout.buildDirectory.dir("delivery-tmp/${baicDeliveryDirName}")
+
+tasks.register('cleanBaicDelivery', Delete) {
+    delete layout.buildDirectory.dir("sdk-repo")
+    delete layout.buildDirectory.dir("delivery-tmp")
+    delete layout.buildDirectory.dir("deliveries")
+}
+
+tasks.register('generateBaicDeliveryReadme') {
+    outputs.file(baicReadmeFile)
+
+    doLast {
+        def readme = baicReadmeFile.get().asFile
+        readme.parentFile.mkdirs()
+        readme.text = """# OnlineSDK-Android-BAIC SDK 交付包
+
+## 包内容
+
+- `sdk-repo/`：标准 Maven 本地仓库目录，可直接给客户使用
+- `坐标`：`${publishedGroupId}:${publishedArtifactId}:${kitVersionName}`
+- `版本`：`${kitVersionName}`
+
+## 客户接入步骤
+
+### 1. 解压交付包
+
+假设客户将压缩包解压到：`/path/to/OnlineSDK-Android-BAIC-${kitVersionName}`
+
+### 2. 配置仓库
+
+如果客户项目使用 Gradle 7+，建议在 `settings.gradle` 中配置：
+
+```gradle
+dependencyResolutionManagement {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url = uri("https://jitpack.io") }
+        maven { url = uri("/path/to/OnlineSDK-Android-BAIC-${kitVersionName}/sdk-repo") }
+    }
+}
+```
+
+如果客户项目仍在 `build.gradle` 中统一配置仓库，可写成：
+
+```gradle
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url = uri("https://jitpack.io") }
+        maven { url = uri("/path/to/OnlineSDK-Android-BAIC-${kitVersionName}/sdk-repo") }
+    }
+}
+```
+
+### 3. 添加依赖
+
+```gradle
+dependencies {
+    implementation "${publishedGroupId}:${publishedArtifactId}:${kitVersionName}"
+}
+```
+
+## 说明
+
+- 当前交付包只包含 `OnlineSDK-Android-BAIC` 本身的 Maven 产物
+- SDK 的外部依赖仍需要客户项目保留 `google()`、`mavenCentral()` 与 `jitpack.io`
+- 如果客户无法访问公网仓库，需要再额外提供第三方依赖镜像
+- `sdk-repo/` 也可以直接上传到公司内网 HTTP 服务器或制品库供客户统一接入
+"""
+    }
+}
+
+tasks.register('stageBaicDelivery', Sync) {
+    dependsOn 'cleanBaicDelivery'
+    dependsOn 'generateBaicDeliveryReadme'
+    dependsOn ':onlineservicesdk:publishKitReleasePublicationToSdkRepository'
+
+    into baicStagingDir
+
+    from(layout.buildDirectory.dir('sdk-repo')) {
+        into 'sdk-repo'
+    }
+
+    from(baicReadmeFile)
+}
+
+tasks.register('exportBaicDelivery', Zip) {
+    dependsOn 'stageBaicDelivery'
+
+    archiveBaseName = baicDeliveryDirName
+    archiveClassifier = 'delivery'
+    destinationDirectory = layout.buildDirectory.dir('deliveries')
+
+    from(baicStagingDir) {
+        into baicDeliveryDirName
+    }
+
+    doLast {
+        println ""
+        println "BAIC delivery package ready: ${archiveFile.get().asFile}"
+    }
 }

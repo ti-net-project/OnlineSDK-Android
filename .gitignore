@@ -9,3 +9,15 @@
 local.properties
 /*/build
 /.idea
+
+# Extracted AAR inspection artifacts
+/imagepicker/AndroidManifest.xml
+/imagepicker/R.txt
+/imagepicker/classes.jar
+/imagepicker/res/
+/imagepicker/META-INF/
+/wxcamera/AndroidManifest.xml
+/wxcamera/R.txt
+/wxcamera/classes.jar
+/wxcamera/res/
+/wxcamera/META-INF/
