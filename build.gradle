@@ -68,19 +68,26 @@ tasks.register('buildOnlineLibSDK') {
     }
 }
 
+def buildProfile = (findProperty("buildProfile") ?: "default").toString()
+def isBaicBuild = buildProfile == "baic"
 
 ext {
     //发布说明
     // 发布客服Lib项目需要修改libVersionName，同时执行buildOnlineLibSDK
-    // 发布客服kit项目需要修改kitVersionName，同时执行buildOnlineKitSDK
+    // 发布客服kit项目执行 buildOnlineKitSDK
+    // 打北汽交付包时使用 -PbuildProfile=baic 或 scripts/export_baic_delivery.sh
 
     // kit version name
-    kitVersionName = '2.5.14-beta.1'
+    defaultKitVersionName = '2.5.14-beta.1'
+    baicKitVersionName = '2.5.14-baic'
+    kitVersionName = isBaicBuild ? baicKitVersionName : defaultKitVersionName
     // lib version name
     libVersionName = '1.8.0_lib'
 
     publishedGroupId = 'com.github.ti-net-project'
-    publishedArtifactId = 'OnlineSDK-Android'
+    defaultPublishedArtifactId = 'OnlineSDK-Android'
+    baicPublishedArtifactId = 'OnlineSDK-Android-BAIC'
+    publishedArtifactId = isBaicBuild ? baicPublishedArtifactId : defaultPublishedArtifactId
 }
 
 def baicDeliveryDirName = "${publishedArtifactId}-${kitVersionName}"

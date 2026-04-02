@@ -4,7 +4,7 @@ set -euo pipefail
 ROOT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT_DIR"
 
-./gradlew :onlineservicesdk:clean cleanBaicDelivery exportBaicDelivery "$@"
+./gradlew -PbuildProfile=baic :onlineservicesdk:clean cleanBaicDelivery exportBaicDelivery "$@"
 
 DELIVERY_DIR="$ROOT_DIR/build/deliveries"
 LATEST_ZIP="$(ls -1t "$DELIVERY_DIR"/OnlineSDK-Android-BAIC-*-delivery.zip 2>/dev/null | head -n 1 || true)"
