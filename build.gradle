@@ -78,7 +78,7 @@ ext {
     // 打北汽交付包时使用 -PbuildProfile=baic 或 scripts/export_baic_delivery.sh
 
     // kit version name
-    defaultKitVersionName = '2.5.14-beta.2'
+    defaultKitVersionName = '2.5.14'
     baicKitVersionName = '2.5.14-baic'
     kitVersionName = isBaicBuild ? baicKitVersionName : defaultKitVersionName
     // lib version name
